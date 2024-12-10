@@ -1,0 +1,41 @@
+{
+    "name": "wjbecker/netsuite_suitetalk",
+    "description": "A Laravel package for consuming NetSuite SuiteTalk REST API",
+    "keywords": [
+        "laravel", "NetSuite", "SuiteTalk", "REST API", "php", "sdk", "rest", "api"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Josh Becker",
+            "email": "josh48202@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : "^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.5|^7.0",
+        "guzzlehttp/oauth-subscriber": "^0.6.0",
+        "spatie/laravel-package-tools": "^1.0|^1.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wjbecker\\NetSuiteSuiteTalk\\": "src/"
+        }
+    },
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Wjbecker\\NetSuiteSuiteTalk\\NetSuiteSuiteTalkServiceProvider"
+            ],
+            "aliases": {
+                "NetSuiteSuiteTalk": "Wjbecker\\NetSuiteSuiteTalk\\Facades\\NetSuiteSuiteTalk"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
