@@ -24,9 +24,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', 'record/v1/salesOrder', [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -107,11 +107,11 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'expandSubResources' => $expandSubResources,
                     'simpleEnumFormat' => $simpleEnumFormat,
                     'fields' => $fields,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -152,11 +152,11 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', 'record/v1/salesOrder', [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'q' => $q,
                     'limit' => $limit,
                     'offset' => $offset,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -197,9 +197,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/cashSale'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -241,9 +241,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/fulfillmentRequest'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -285,9 +285,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/invoice'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -329,9 +329,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/itemFulfillment'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -373,9 +373,9 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/returnAuthorization'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -418,10 +418,10 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -464,10 +464,10 @@ class SalesOrderResource extends BaseResource
     {
         try {
             $response = $this->client->request('PUT', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
-                'query' => $this->sanitizeQueryParams([
+                'query' => [
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ]),
+                ],
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
