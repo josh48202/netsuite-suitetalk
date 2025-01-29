@@ -5,11 +5,13 @@ namespace Wjbecker\NetSuiteSuiteTalk\Facades;
 use Illuminate\Support\Facades\Facade;
 use Wjbecker\NetSuiteSuiteTalk\NetSuiteSuiteTalkClient;
 use Wjbecker\NetSuiteSuiteTalk\Resources\CustomerResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\ExpenseReportResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\OpportunityResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\SalesOrderResource;
 
 /**
  * @method static CustomerResource customer()
+ * @method static ExpenseReportResource expenseReport()
  * @method static OpportunityResource opportunity()
  * @method static SalesOrderResource salesOrder()
  * @method static query()
