@@ -24,9 +24,9 @@ class ExpenseReportResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', 'record/v1/expenseReport', [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -107,11 +107,11 @@ class ExpenseReportResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/expenseReport/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'expandSubResources' => $expandSubResources,
                     'simpleEnumFormat' => $simpleEnumFormat,
                     'fields' => $fields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -152,11 +152,11 @@ class ExpenseReportResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', 'record/v1/expenseReport', [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'q' => $q,
                     'limit' => $limit,
                     'offset' => $offset,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -198,10 +198,10 @@ class ExpenseReportResource extends BaseResource
     {
         try {
             $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/expenseReport/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -244,10 +244,10 @@ class ExpenseReportResource extends BaseResource
     {
         try {
             $response = $this->client->request('PUT', str_replace('{id}', $id, 'record/v1/expenseReport/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],

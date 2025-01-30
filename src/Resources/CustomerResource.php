@@ -24,9 +24,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', 'record/v1/customer', [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -107,11 +107,11 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/customer/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'expandSubResources' => $expandSubResources,
                     'simpleEnumFormat' => $simpleEnumFormat,
                     'fields' => $fields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -152,11 +152,11 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('GET', 'record/v1/customer', [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'q' => $q,
                     'limit' => $limit,
                     'offset' => $offset,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -197,9 +197,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/cashSale'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -241,9 +241,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/customerPayment'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -285,9 +285,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/estimate'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -329,9 +329,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/invoice'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -373,9 +373,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/opportunity'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -417,9 +417,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/salesOrder'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -461,9 +461,9 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/customer/{id}/!transform/vendor'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -506,10 +506,10 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/customer/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -552,10 +552,10 @@ class CustomerResource extends BaseResource
     {
         try {
             $response = $this->client->request('PUT', str_replace('{id}', $id, 'record/v1/customer/{id}'), [
-                'query' => [
+                'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
-                ],
+                ]),
                 'headers' => [
                     'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],

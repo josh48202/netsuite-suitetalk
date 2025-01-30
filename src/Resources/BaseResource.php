@@ -15,24 +15,20 @@ abstract class BaseResource
         $sanitizedParams = [];
 
         foreach ($queryParams as $key => $value) {
-            // Sanitize the key
-            $sanitizedKey = urlencode((string)$key);
+            $sanitizedKey = urlencode((string) $key);
 
-            if (is_bool($value)) {
-                // Convert boolean to string "true" or "false"
-                $sanitizedValue = $value ? 'true' : 'false';
-            } elseif (is_null($value)) {
-                // Convert null to an empty string
-                $sanitizedValue = '';
-            } elseif (is_scalar($value)) {
-                // Keep strings, numbers, and other scalar values
-                $sanitizedValue = urlencode((string)$value);
-            } else {
-                // Skip unsupported types (arrays, objects, resources)
-                continue;
+            $sanitizedParams[$sanitizedKey] = match (true) {
+                $key === 'q' => $value, // Keep "q" as is
+                is_bool($value) => $value ? 'true' : 'false', // Convert boolean to string
+                is_null($value) => '', // Convert null to empty string
+                is_scalar($value) => urlencode((string) $value), // Convert scalars safely
+                default => null, // Skip unsupported types
+            };
+
+            // Remove unsupported types (null values)
+            if ($sanitizedParams[$sanitizedKey] === null) {
+                unset($sanitizedParams[$sanitizedKey]);
             }
-
-            $sanitizedParams[$sanitizedKey] = $sanitizedValue;
         }
 
         return $sanitizedParams;
