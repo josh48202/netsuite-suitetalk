@@ -12,6 +12,9 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\NonInventoryResaleItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\NonInventorySaleItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\OpportunityResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\SalesOrderResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\ServicePurchaseItemResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceResaleItemResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceSaleItemResource;
 
 /**
  * @method static CustomerResource customer()
@@ -22,6 +25,9 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\SalesOrderResource;
  * @method static NonInventorySaleItemResource nonInventorySaleItem()
  * @method static OpportunityResource opportunity()
  * @method static SalesOrderResource salesOrder()
+ * @method static ServicePurchaseItemResource servicePurchaseItem()
+ * @method static ServiceResaleItemResource serviceResaleItem()
+ * @method static ServiceSaleItemResource serviceSaleItem()
  * @method static query()
  */
 class NetSuiteSuiteTalk extends Facade
