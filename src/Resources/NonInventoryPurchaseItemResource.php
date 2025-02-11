@@ -93,7 +93,7 @@ class NonInventoryPurchaseItemResource extends BaseResource
      *
      * Get record.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param bool|null $expandSubResources Set to &#39;true&#39; to automatically expand all sublists, sublist lines, and subrecords on this record. (optional, default to false)
      * @param bool|null $simpleEnumFormat Set to true to return enumeration values in a format that only shows the internal ID value. (optional, default to false)
      * @param string|null $fields The names of the fields and sublists on the record. Only the selected fields and sublists will be returned in the response. (optional, default to null)
@@ -103,7 +103,7 @@ class NonInventoryPurchaseItemResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function get(int $id, bool $expandSubResources = false, bool $simpleEnumFormat = false, string $fields = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function get(int|string $id, bool $expandSubResources = false, bool $simpleEnumFormat = false, string $fields = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/nonInventoryPurchaseItem/{id}'), [
