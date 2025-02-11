@@ -55,14 +55,14 @@ class OpportunityResource extends BaseResource
      *
      * Remove record.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
      * @param string|null $idempotencyKey A user-defined unique idempotency key that is applied to every asynchronous requests to ensure that the request is executed only once. Only one request can be executed with every unique idempotency key. Use UUID in string format as defined by RFC 4122. If the request is executed synchronously, this value is ignored.
      * @param array $additionalHeaders
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function delete(int $id, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function delete(int|string $id, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('DELETE', str_replace('{id}', $id, 'record/v1/opportunity/{id}'), [
@@ -184,7 +184,7 @@ class OpportunityResource extends BaseResource
      *
      * Transform to cashSale.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param array $nsResource Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -193,7 +193,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformCashSale(int $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformCashSale(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/opportunity/{id}/!transform/cashSale'), [
@@ -228,7 +228,7 @@ class OpportunityResource extends BaseResource
      *
      * Transform to estimate.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param array $nsResource Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -237,7 +237,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformEstimate(int $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformEstimate(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/opportunity/{id}/!transform/estimate'), [
@@ -272,7 +272,7 @@ class OpportunityResource extends BaseResource
      *
      * Transform to invoice.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param array $nsResource Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -281,7 +281,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformInvoice(int $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformInvoice(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/opportunity/{id}/!transform/invoice'), [
@@ -316,7 +316,7 @@ class OpportunityResource extends BaseResource
      *
      * Transform to salesOrder.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param array $salesOrder Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -325,7 +325,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformSalesOrder(int $id, array $salesOrder, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformSalesOrder(int|string $id, array $salesOrder, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/opportunity/{id}/!transform/salesOrder'), [
@@ -360,7 +360,7 @@ class OpportunityResource extends BaseResource
      *
      * Update record.
      *
-     * @param int $id Internal identifier. (required)
+     * @param int|string $id Internal identifier. (required)
      * @param array $opportunity Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool|null $replaceSelectedFields If set to &#39;true&#39;, all fields that should be deleted in the update request, including body fields, must be included in the &#39;replace&#39; query parameter. (optional, default to false)
@@ -370,7 +370,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function update(int $id, array $opportunity, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function update(int|string $id, array $opportunity, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/opportunity/{id}'), [
