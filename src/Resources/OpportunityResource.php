@@ -273,7 +273,7 @@ class OpportunityResource extends BaseResource
      * Transform to invoice.
      *
      * @param int|string $id Internal identifier. (required)
-     * @param array $nsResource Request body. (required)
+     * @param array $invoice Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
      * @param string|null $idempotencyKey A user-defined unique idempotency key that is applied to every asynchronous requests to ensure that the request is executed only once. Only one request can be executed with every unique idempotency key. Use UUID in string format as defined by RFC 4122. If the request is executed synchronously, this value is ignored.
@@ -281,7 +281,7 @@ class OpportunityResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformInvoice(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformInvoice(int|string $id, array $invoice, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
             $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/opportunity/{id}/!transform/invoice'), [
@@ -294,7 +294,7 @@ class OpportunityResource extends BaseResource
                     ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
                     ...$additionalHeaders
                 ],
-                'json' => $nsResource
+                'json' => $invoice
             ]);
             
             if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {

@@ -5,14 +5,14 @@ namespace Wjbecker\NetSuiteSuiteTalk\Resources;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 
-class SalesOrderResource extends BaseResource
+class InvoiceResource extends BaseResource
 {
     /**
      * Operation create
      *
      * Insert record.
      *
-     * @param array $salesOrder Request body. (required)
+     * @param array $invoice Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
      * @param string|null $idempotencyKey A user-defined unique idempotency key that is applied to every asynchronous requests to ensure that the request is executed only once. Only one request can be executed with every unique idempotency key. Use UUID in string format as defined by RFC 4122. If the request is executed synchronously, this value is ignored.
@@ -20,10 +20,10 @@ class SalesOrderResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function create(array $salesOrder, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function create(array $invoice, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('POST', 'record/v1/salesOrder', [
+            $response = $this->client->request('POST', 'record/v1/invoice', [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                 ]),
@@ -33,7 +33,7 @@ class SalesOrderResource extends BaseResource
                     ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
                     ...$additionalHeaders
                 ],
-                'json' => $salesOrder
+                'json' => $invoice
             ]);
             
             if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {
@@ -65,7 +65,7 @@ class SalesOrderResource extends BaseResource
     public function delete(int|string $id, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('DELETE', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
+            $response = $this->client->request('DELETE', str_replace('{id}', $id, 'record/v1/invoice/{id}'), [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     ...$prefer ? ['Prefer' => 'respond-async'] : [],
@@ -106,7 +106,7 @@ class SalesOrderResource extends BaseResource
     public function get(int|string $id, bool $expandSubResources = false, bool $simpleEnumFormat = false, string $fields = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
+            $response = $this->client->request('GET', str_replace('{id}', $id, 'record/v1/invoice/{id}'), [
                 'query' => $this->sanitizeQueryParams([
                     'expandSubResources' => $expandSubResources,
                     'simpleEnumFormat' => $simpleEnumFormat,
@@ -151,7 +151,7 @@ class SalesOrderResource extends BaseResource
     public function list(string $q = null, int $limit = 1000, int $offset = 0, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('GET', 'record/v1/salesOrder', [
+            $response = $this->client->request('GET', 'record/v1/invoice', [
                 'query' => $this->sanitizeQueryParams([
                     'q' => $q,
                     'limit' => $limit,
@@ -180,9 +180,9 @@ class SalesOrderResource extends BaseResource
     }
 
     /**
-     * Operation transformCashSale
+     * Operation transformCreditMemo
      *
-     * Transform to cashSale.
+     * Transform to creditMemo.
      *
      * @param int|string $id Internal identifier. (required)
      * @param array $nsResource Request body. (required)
@@ -193,10 +193,10 @@ class SalesOrderResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformCashSale(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformCreditMemo(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/cashSale'), [
+            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/invoice/{id}/!transform/creditMemo'), [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                 ]),
@@ -224,97 +224,9 @@ class SalesOrderResource extends BaseResource
     }
 
     /**
-     * Operation transformFulfillmentRequest
+     * Operation transformCustomerPayment
      *
-     * Transform to fulfillmentRequest.
-     *
-     * @param int|string $id Internal identifier. (required)
-     * @param array $nsResource Request body. (required)
-     * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
-     * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
-     * @param string|null $idempotencyKey A user-defined unique idempotency key that is applied to every asynchronous requests to ensure that the request is executed only once. Only one request can be executed with every unique idempotency key. Use UUID in string format as defined by RFC 4122. If the request is executed synchronously, this value is ignored.
-     * @param array $additionalHeaders
-     * @return array|mixed
-     * @throws GuzzleException
-     */
-    public function transformFulfillmentRequest(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
-    {
-        try {
-            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/fulfillmentRequest'), [
-                'query' => $this->sanitizeQueryParams([
-                    'replace' => $replace,
-                ]),
-                'headers' => [
-                    'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
-                    ...$prefer ? ['Prefer' => 'respond-async'] : [],
-                    ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
-                    ...$additionalHeaders
-                ],
-                'json' => $nsResource
-            ]);
-            
-            if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {
-                return $response->getHeaders();
-            } else {
-                return json_decode($response->getBody()->getContents(), true);
-            }
-        } catch (RequestException $e) {
-            return [
-                'status_code' => $e->hasResponse() ? $e->getResponse()->getStatusCode() : $e->getCode(),
-                'reason' => $e->hasResponse() ? $e->getResponse()->getReasonPhrase() : null,
-                'details' => $e->hasResponse() ? json_decode($e->getResponse()->getBody()->getContents(), true) : $e->getMessage()
-            ];
-        }
-    }
-
-    /**
-     * Operation transformInvoice
-     *
-     * Transform to invoice.
-     *
-     * @param int|string $id Internal identifier. (required)
-     * @param array $invoice Request body. (required)
-     * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
-     * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
-     * @param string|null $idempotencyKey A user-defined unique idempotency key that is applied to every asynchronous requests to ensure that the request is executed only once. Only one request can be executed with every unique idempotency key. Use UUID in string format as defined by RFC 4122. If the request is executed synchronously, this value is ignored.
-     * @param array $additionalHeaders
-     * @return array|mixed
-     * @throws GuzzleException
-     */
-    public function transformInvoice(int|string $id, array $invoice, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
-    {
-        try {
-            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/invoice'), [
-                'query' => $this->sanitizeQueryParams([
-                    'replace' => $replace,
-                ]),
-                'headers' => [
-                    'Content-Type' => 'application/vnd.oracle.resource+json; type=singular',
-                    ...$prefer ? ['Prefer' => 'respond-async'] : [],
-                    ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
-                    ...$additionalHeaders
-                ],
-                'json' => $invoice
-            ]);
-            
-            if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {
-                return $response->getHeaders();
-            } else {
-                return json_decode($response->getBody()->getContents(), true);
-            }
-        } catch (RequestException $e) {
-            return [
-                'status_code' => $e->hasResponse() ? $e->getResponse()->getStatusCode() : $e->getCode(),
-                'reason' => $e->hasResponse() ? $e->getResponse()->getReasonPhrase() : null,
-                'details' => $e->hasResponse() ? json_decode($e->getResponse()->getBody()->getContents(), true) : $e->getMessage()
-            ];
-        }
-    }
-
-    /**
-     * Operation transformItemFulfillment
-     *
-     * Transform to itemFulfillment.
+     * Transform to customerPayment.
      *
      * @param int|string $id Internal identifier. (required)
      * @param array $nsResource Request body. (required)
@@ -325,10 +237,10 @@ class SalesOrderResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function transformItemFulfillment(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function transformCustomerPayment(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/itemFulfillment'), [
+            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/invoice/{id}/!transform/customerPayment'), [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                 ]),
@@ -372,7 +284,7 @@ class SalesOrderResource extends BaseResource
     public function transformReturnAuthorization(int|string $id, array $nsResource, string $replace = null, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/salesOrder/{id}/!transform/returnAuthorization'), [
+            $response = $this->client->request('POST', str_replace('{id}', $id, 'record/v1/invoice/{id}/!transform/returnAuthorization'), [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                 ]),
@@ -405,7 +317,7 @@ class SalesOrderResource extends BaseResource
      * Update record.
      *
      * @param int|string $id Internal identifier. (required)
-     * @param array $salesOrder Request body. (required)
+     * @param array $invoice Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool|null $replaceSelectedFields If set to &#39;true&#39;, all fields that should be deleted in the update request, including body fields, must be included in the &#39;replace&#39; query parameter. (optional, default to false)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -414,10 +326,10 @@ class SalesOrderResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function update(int|string $id, array $salesOrder, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function update(int|string $id, array $invoice, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
+            $response = $this->client->request('PATCH', str_replace('{id}', $id, 'record/v1/invoice/{id}'), [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
@@ -428,7 +340,7 @@ class SalesOrderResource extends BaseResource
                     ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
                     ...$additionalHeaders
                 ],
-                'json' => $salesOrder
+                'json' => $invoice
             ]);
             
             if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {
@@ -451,7 +363,7 @@ class SalesOrderResource extends BaseResource
      * Insert or update record.
      *
      * @param string $id External identifier. (required)
-     * @param array $salesOrder Request body. (required)
+     * @param array $invoice Request body. (required)
      * @param string|null $replace The names of sublists on this record. All sublist lines will be replaced with lines specified in the request. The names are delimited by comma. (optional, default to null)
      * @param bool|null $replaceSelectedFields If set to &#39;true&#39;, all fields that should be deleted in the update request, including body fields, must be included in the &#39;replace&#39; query parameter. (optional, default to false)
      * @param bool $prefer The server behavior requested by the client. Use 'respond-async' to execute the request asynchronously. If the request is executed asynchronously, 'Preference-applied: respond-async' is returned in the response.
@@ -460,10 +372,10 @@ class SalesOrderResource extends BaseResource
      * @return array|mixed
      * @throws GuzzleException
      */
-    public function upsert(string $id, array $salesOrder, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
+    public function upsert(string $id, array $invoice, string $replace = null, bool $replaceSelectedFields = false, bool $prefer = false, ?string $idempotencyKey = null, array $additionalHeaders = []): mixed
     {
         try {
-            $response = $this->client->request('PUT', str_replace('{id}', $id, 'record/v1/salesOrder/{id}'), [
+            $response = $this->client->request('PUT', str_replace('{id}', $id, 'record/v1/invoice/{id}'), [
                 'query' => $this->sanitizeQueryParams([
                     'replace' => $replace,
                     'replaceSelectedFields' => $replaceSelectedFields,
@@ -474,7 +386,7 @@ class SalesOrderResource extends BaseResource
                     ...$idempotencyKey ? ['X-NetSuite-Idempotency-Key' => $idempotencyKey] : [],
                     ...$additionalHeaders
                 ],
-                'json' => $salesOrder
+                'json' => $invoice
             ]);
             
             if ($response->getStatusCode() === 204 || $response->getStatusCode() === 202) {
