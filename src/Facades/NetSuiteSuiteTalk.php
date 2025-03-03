@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use Wjbecker\NetSuiteSuiteTalk\NetSuiteSuiteTalkClient;
 use Wjbecker\NetSuiteSuiteTalk\Resources\CustomerResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\EmployeeResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\ExpenseCategoryResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ExpenseReportResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\InventoryItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\InvoiceResource;
@@ -21,6 +22,7 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceSaleItemResource;
 /**
  * @method static CustomerResource customer()
  * @method static EmployeeResource employee()
+ * @method static ExpenseCategoryResource expenseCategory()
  * @method static ExpenseReportResource expenseReport()
  * @method static InventoryItemResource inventoryItem()
  * @method static InvoiceResource invoice()
