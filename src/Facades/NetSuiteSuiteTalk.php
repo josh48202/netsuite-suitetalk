@@ -18,6 +18,7 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\SalesOrderResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ServicePurchaseItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceResaleItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceSaleItemResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\VendorBillResource;
 
 /**
  * @method static CustomerResource customer()
@@ -34,6 +35,7 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\ServiceSaleItemResource;
  * @method static ServicePurchaseItemResource servicePurchaseItem()
  * @method static ServiceResaleItemResource serviceResaleItem()
  * @method static ServiceSaleItemResource serviceSaleItem()
+ * @method static VendorBillResource vendorBill()
  * @method static query()
  */
 class NetSuiteSuiteTalk extends Facade
