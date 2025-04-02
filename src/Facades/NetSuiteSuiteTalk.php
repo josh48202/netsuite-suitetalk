@@ -8,6 +8,7 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\CustomerResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\EmployeeResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ExpenseCategoryResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\ExpenseReportResource;
+use Wjbecker\NetSuiteSuiteTalk\Resources\InventoryAdjustmentResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\InventoryItemResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\InvoiceResource;
 use Wjbecker\NetSuiteSuiteTalk\Resources\NonInventoryPurchaseItemResource;
@@ -25,6 +26,7 @@ use Wjbecker\NetSuiteSuiteTalk\Resources\VendorBillResource;
  * @method static EmployeeResource employee()
  * @method static ExpenseCategoryResource expenseCategory()
  * @method static ExpenseReportResource expenseReport()
+ * @method static InventoryAdjustmentResource inventoryAdjustment()
  * @method static InventoryItemResource inventoryItem()
  * @method static InvoiceResource invoice()
  * @method static NonInventoryPurchaseItemResource nonInventoryPurchaseItem()
